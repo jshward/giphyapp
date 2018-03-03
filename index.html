@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Page Title</title>
+	<title>Giphy!</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	 crossorigin="anonymous">
@@ -36,7 +36,7 @@
 			// displayMovieInfo function re-renders the HTML to display the appropriate content
 			function displayMovieInfo() {
 				var movie = $(this).attr("data-name");
-				var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + movie + "&api_key=3eDZ8nPG1vM9MFTJ2LS2dYwrfzfzrIop&limit=10";
+				var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + movie + "&api_key=3eDZ8nPG1vM9MFTJ2LS2dYwrfzfzrIop&limit=10";
 				// Creating an AJAX call for the specific movie button being clicked
 				$.ajax({
 					url: queryURL,
@@ -45,7 +45,7 @@
 					var results = response.data;
 
 					for (var i = 0; i < results.length; i++) {
-						var gifDiv = $("<div class='item'>");
+						var gifDiv = $("<div class='item col-md-6'>");
 
 						var rating = results[i].rating;
 
@@ -96,7 +96,7 @@
 					//	$("#movies-view").prepend(movieDiv);
 				});
 			};
-			$('#images').on('hover', '.gif', function () {
+			$('#images').on('click', '.gif', function () {
 				var src = $(this).attr("src");
 				if ($(this).hasClass('playing')) {
 					//stop
